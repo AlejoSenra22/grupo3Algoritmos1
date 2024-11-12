@@ -1,9 +1,13 @@
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class TestTabla {
     public static void main(String[] args) throws IOException {
-        String pathbat = "C:\\Users\\MAURICIO\\Downloads\\mascosas\\grupo3Algoritmos1\\TP_ALGO1_GRUPO3\\src\\test.csv";
-        Tabla tabla = new Tabla(pathbat,true);
+        String path = "C:\\Users\\ariel\\OneDrive\\Escritorio\\Varios\\UNSAM\\Algoritmos_1\\TP_FINAL_REPO\\grupo3Algoritmos1\\TP_ALGO1_GRUPO3\\src\\test.csv";
+        Tabla tabla = new Tabla(path,true);
         System.out.println(tabla);
         Tabla columnasSeleccionadas = tabla.obtenerColumnas("Edad","Ciudad");
         System.out.println(columnasSeleccionadas);
@@ -54,11 +58,11 @@ public class TestTabla {
         // System.out.println(tabla);
 
 
-
         // // Agregar columnas a la tabla
         // // tabla.agregarColumna(new ColumnaString("Nombre"));
         // // tabla.agregarColumna(new ColumnaNumber("Edad"));
         // // tabla.agregarColumna(new ColumnaString("Ciudad"));
+
 
         // // Cargar desde una matriz
         // // Object[][] matriz = {
@@ -68,8 +72,9 @@ public class TestTabla {
         // //     {null, 25, "Valencia"},
         // //     {"Luis", 28, null}
         // // };
+        // Object[][] matriz = {};
 
-        // // Tabla tablaDesdeMatriz = new Tabla(matriz, true);
+        // Tabla tablaDesdeMatriz = new Tabla(matriz, true);
 
         // // Verificacion del funcionamiento
         // // for (Columna<?> columna : tablaDesdeMatriz.obtenerColumnas()){
@@ -96,7 +101,7 @@ public class TestTabla {
         // // System.out.println(matriz[3][1].getClass());
 
 
-        // // Cargar desde una secuencia lineal nativa de java
+        // Cargar desde una secuencia lineal nativa de java
         // List<List<Object>> listaDeFilas = new ArrayList<>();
         // listaDeFilas.add(Arrays.asList("Apellido", "ID", "Nombre", "Edad", "Vive", "Columna vacia"));
         // listaDeFilas.add(Arrays.asList("Henry",1, "Alice", 30, true, null));

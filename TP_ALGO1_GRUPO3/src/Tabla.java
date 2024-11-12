@@ -106,7 +106,8 @@ public class Tabla{
 
         ArrayList<ArrayCelda> columnasCastear = new ArrayList<>();
         
-        if (matriz.length == 0) {// CrearExepcion
+        if (matriz.length == 0) {
+            throw new ExcepcionConstructorConMatrizVacia("El constructor recibió una matriz vacía, no se puede crear una tabla a partir de una estructura vacía");
         }
 
         if (tieneEncabezado) {
@@ -168,10 +169,14 @@ public class Tabla{
         ArrayList<ArrayCelda> columnasCastear = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))){
+            String primeraLinea = br.readLine();
+            if (primeraLinea == null){
+                throw new ExcepcionConstructorConArchivoVacio("El constructor recibió un archivo vacío, no se puede crear una tabla a partir de una estructura vacía");
+            }
 
             // Leer encabezado si existe, y crear columnas
-            if (tieneEncabezado && (linea = br.readLine()) != null) {
-                String[] encabezadosArray = linea.split(delimitador);
+            if (tieneEncabezado && (primeraLinea != null)) {
+                String[] encabezadosArray = primeraLinea.split(delimitador);
                 for (String encabezado : encabezadosArray) {
                     ArrayCelda columna = new ArrayCelda(encabezado); // Creo arreglos que simulen las columnas para almecenar celdas, hasta tener la verificaciones de tipos hecha. Luego crearemos cada columna según el tipo correspondiente.
                     columna.asignarNombre(encabezado);
@@ -180,7 +185,7 @@ public class Tabla{
                     //columnas.add(columna);
                 }
             }
-        
+
             // Leer datos y crear columnas si no hay encabezado
             while ((linea = br.readLine()) != null) {
                 String[] valores = linea.split(delimitador);
@@ -212,8 +217,8 @@ public class Tabla{
             }
         }
 
-        for (ArrayCelda columna : columnasCastear) {
-            
+        for (ArrayCelda columna : columnasCastear) {       
+
             AutoCasteoColumna(columna); 
             int indiceCol = this.obtenerColumnas().indexOf(columna);
             if (!(esConsistente(this.obtenerColumnas().get(indiceCol)))){
@@ -232,10 +237,14 @@ public class Tabla{
         ArrayList<ArrayCelda> columnasCastear = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))){
-    
+            String primeraLinea = br.readLine();
+            if (primeraLinea == null){
+                throw new ExcepcionConstructorConArchivoVacio("El constructor recibió un archivo vacío, no se puede crear una tabla a partir de una estructura vacía");
+            }
+
             // Leer encabezado si existe, y crear columnas
-            if (tieneEncabezado && (linea = br.readLine()) != null) {
-                String[] encabezadosArray = linea.split(delimitador);
+            if (tieneEncabezado && (primeraLinea) != null) {
+                String[] encabezadosArray = primeraLinea.split(delimitador);
                 for (String encabezado : encabezadosArray) {
                     ArrayCelda columna = new ArrayCelda(encabezado); // Creo arreglos que simulen las columnas para almecenar celdas, hasta tener la verificaciones de tipos hecha. Luego crearemos cada columna según el tipo correspondiente.
                     columna.asignarNombre(encabezado);
