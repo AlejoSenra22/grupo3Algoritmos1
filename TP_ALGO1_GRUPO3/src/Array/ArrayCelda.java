@@ -30,6 +30,10 @@ public class ArrayCelda implements util.ImputarFaltantes {
         }
         return (T) celda.obtenerValor();
     }
+
+    public void eliminarCelda (int indice){
+        this.celdas.remove(indice);
+    }
     
     
     public Integer obtenerTamaño() {
