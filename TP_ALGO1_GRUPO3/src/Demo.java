@@ -3,13 +3,18 @@ import java.util.Arrays;
 
 public class Demo {
     public static void main(String[] args) throws IOException {
-        Tabla tabla = new Tabla("/home/tareas/Downloads/grupo3Algoritmos1/TP_ALGO1_GRUPO3/src/Plastic Waste Around the World.csv", true);
+        Tabla tabla = new Tabla("C:\\Users\\MAURICIO\\Downloads\\DEMO\\grupo3Algoritmos1\\TP_ALGO1_GRUPO3\\src\\Plastic Waste Around the World.csv", true);
         System.out.println(tabla);
 
 
 
-
+        /////////////// INFO
+        System.out.println("INFO");
         tabla.info(); // informacion basica
+
+        /////////////// VISUALIZAR
+        System.out.println("VISUALIZAR");
+        tabla.visualizar(0, 0, 10);
 
 
         ///////////// ACCESO INDEXADO
@@ -43,6 +48,7 @@ public class Demo {
         /////// CONCATENACION
         System.out.println("CONCATENACION");
         Tabla concatenada = Tabla.concatenar(tabla, tabla);
+        concatenada.ordenarPorColumnas(Arrays.asList("Country"), false);
         System.out.println(concatenada);
 
 
